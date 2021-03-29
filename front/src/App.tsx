@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FormEvent, useState } from 'react';
+import {Button} from '@material-ui/core';
+
 
 function App() {
+  const [color, setColor] = useState<string>("Un botón");
+  
+  const addingOpt = (e: FormEvent<HTMLFormElement>): void => {
+    setColor('¿Algo?')
+    e.preventDefault()
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Te quiero, mildrilla. &lt;3
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header>
+        <h1>Hi</h1>
+        <form  id="form1" onSubmit={addingOpt} >
+          <Button type="submit" form="form1" variant="contained" color="default" >{color}</Button>
+        </form>
+        
       </header>
-    </div>
+
+    </div> 
   );
 }
 
